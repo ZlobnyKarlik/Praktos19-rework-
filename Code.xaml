@@ -1,4 +1,4 @@
-﻿using System.Security.Cryptography;
+using System.Security.Cryptography;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -25,7 +25,17 @@ namespace WpfApp1
         { listBox1.Items.Add(tb1.Text); }
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            listBox1.Items.RemoveAt(listBox1.SelectedIndex);
+            if (tb1.Text.Length <= 0)
+            {
+                MessageBox.Show("do not try to break me." + "> closing program");
+                this.Close();
+            }
+            else
+            {
+                listBox1.Items.RemoveAt(listBox1.SelectedIndex);
+            }
+           
+           
         }
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
@@ -33,23 +43,41 @@ namespace WpfApp1
         }
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
-            Random rnd = new Random();
-            int i, n = Convert.ToInt32(tb2.Text);
-            for (i = 1; i <= n; i++)
+
+            if (tb1.Text.Length <= 0)
             {
-                listBox1.Items.Add(rnd.Next(200));
+                MessageBox.Show("do not try to break me." + "> closing program");
+                this.Close();
+            }
+            else
+            {
+                Random rnd = new Random();
+
+                int i, n = Convert.ToInt32(tb2.Text);
+                for (i = 1; i <= n; i++)
+                {
+                    listBox1.Items.Add(rnd.Next(200));
+                }
             }
         }
         private void Button_Click_4(object sender, RoutedEventArgs e)
         {
-            int i, sum;
-            sum = 0;
-            for (i = 0; i < listBox1.Items.Count; i++)
+            if (tb1.Text.Length <= 0)
             {
-                sum = sum + Convert.ToInt32(listBox1.Items[i]);
-                tb3.Text = sum.ToString();  
+                MessageBox.Show("do not try to break me." + "> closing program");
+                this.Close();
             }
-             
+            else
+            {
+                int i, sum;
+                sum = 0;
+                for (i = 0; i < listBox1.Items.Count; i++)
+                {
+                    sum = sum + Convert.ToInt32(listBox1.Items[i]);
+                    tb3.Text = sum.ToString();
+                }
+            }
+            
         }
         private void Button_Click_5(object sender, RoutedEventArgs e)
         {
@@ -64,9 +92,13 @@ namespace WpfApp1
             tb3.Clear();
 
         }
-        private void tb3_Changed(object sender, EventArgs e)
+        private void tb3_TextChanged(object sender, EventArgs e)
         {
 
+        }
+        private void Button_Click_6(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("вы уже это провеили лень вставлять");
         }
     }
 }
